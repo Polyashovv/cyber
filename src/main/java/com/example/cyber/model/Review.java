@@ -1,0 +1,46 @@
+package com.example.cyber.model;
+
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.Date;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+@Entity(name = "reviews")
+@Table(name = "reviews")
+public class Review {
+
+    @Id
+    @SequenceGenerator(sequenceName = "user_id_seq", name = "user_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "productId")
+    private Long productId;
+
+    @Column(name = "user_id")
+    private Long user_id;
+
+    @Column(name = "rating")
+    private int rating;
+
+    @Column(name = "text")
+    private String text;
+
+    @Column(name = "createdAt")
+    private Date createdAt;
+
+    @Column(name = "updated_at")
+    private Date updatedAt;
+
+    public Review(String text, Date createdAt) {
+        this.text = text;
+        this.createdAt = createdAt;
+    }
+}
