@@ -35,4 +35,9 @@ public class OrderController {
     public ResponseEntity<List<Order>> getOrderByItemId(@RequestParam("id") Long id) throws ProductNotFoundException {
         return ResponseEntity.ok(orderService.getOrdersByItem(id));
     }
+
+    @GetMapping("/sorted-by-date")
+    public ResponseEntity<List<Order>> getAllOrdersSortedByDate(@RequestParam boolean ascending) {
+        return ResponseEntity.ok(orderService.getAllOrdersSortedByDate(ascending));
+    }
 }

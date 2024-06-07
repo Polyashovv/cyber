@@ -9,4 +9,8 @@ import java.util.List;
 
 public interface OrderRepository extends PagingAndSortingRepository<Order, Long>, JpaRepository<Order, Long> {
     List<Order> findAllByProduct(Product product);
+
+    List<Order> findAllByOrderByOrderDateAsc();
+
+    List<Order> findAllByOrderByOrderDateDesc();
 }

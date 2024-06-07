@@ -16,8 +16,8 @@ import java.util.Date;
 public class Review {
 
     @Id
-    @SequenceGenerator(sequenceName = "user_id_seq", name = "user_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
+    @SequenceGenerator(sequenceName = "review_seq", name = "review_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "review_seq")
     @Column(name = "id")
     private Long id;
 

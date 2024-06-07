@@ -12,4 +12,8 @@ public interface ProductService {
    List<Product> getAllProducts();
 
    Optional<Product> getProductById(Long id);
+
+   List<Product> getAllProductsSortedByPrice(boolean ascending);
+
+   List<Product> getAllProductsSortedByRating(boolean ascending);
 }

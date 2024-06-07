@@ -57,4 +57,9 @@ public class OrderServiceImpl implements OrderService {
             throw new ProductNotFoundException(id);
         }
     }
+
+    @Override
+    public List<Order> getAllOrdersSortedByDate(boolean ascending) {
+        return ascending ? orderRepository.findAllByOrderByOrderDateAsc() : orderRepository.findAllByOrderByOrderDateDesc();
+    }
 }

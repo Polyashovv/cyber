@@ -41,4 +41,14 @@ public class ReviewController {
         reviewService.deleteReview(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/sorted-by-rating")
+    public ResponseEntity<List<Review>> getReviewsSortedByRating(@RequestParam boolean ascending) {
+        return ResponseEntity.ok(reviewService.getAllReviewsSortedByRating(ascending));
+    }
+
+    @GetMapping("/sorted-by-date")
+    public ResponseEntity<List<Review>> getReviewsSortedByDate(@RequestParam boolean ascending) {
+        return ResponseEntity.ok(reviewService.getAllReviewsSortedByDate(ascending));
+    }
 }

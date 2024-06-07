@@ -3,6 +3,7 @@ package com.example.cyber.service;
 import com.example.cyber.model.Review;
 import com.example.cyber.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,5 +41,19 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public void deleteReview(Long reviewId) {
         reviewRepository.deleteById(reviewId);
+    }
+
+    @Override
+    public List<Review> getAllReviewsSortedByRating(boolean ascending) {
+        return ascending ?
+                reviewRepository.findAll(Sort.by(Sort.Direction.ASC, "rating")) :
+                reviewRepository.findAll(Sort.by(Sort.Direction.DESC, "rating"));
+    }
+
+    @Override
+    public List<Review> getAllReviewsSortedByDate(boolean ascending) {
+        return ascending ?
+                reviewRepository.findAll(Sort.by(Sort.Direction.ASC, "createdAt")) :
+                reviewRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
     }
 }

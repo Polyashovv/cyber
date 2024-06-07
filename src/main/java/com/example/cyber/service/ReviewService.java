@@ -9,4 +9,6 @@ public interface ReviewService {
     Review getReviewById(Long id);
     List<Review> getAllReviews();
     void deleteReview(Long id);
+    List<Review> getAllReviewsSortedByRating(boolean ascending);
+    List<Review> getAllReviewsSortedByDate(boolean ascending);
 }

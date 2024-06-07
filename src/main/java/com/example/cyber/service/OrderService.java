@@ -8,11 +8,8 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 
 public interface OrderService {
-
-    Order placeNewOrder(OrderRequests order);
-
-
+    Order placeNewOrder(OrderRequests order) throws ProductNotFoundException;
     Page<Order> getAllOrders(int page, boolean sortByDate);
-
     List<Order> getOrdersByItem(Long id) throws ProductNotFoundException;
+    List<Order> getAllOrdersSortedByDate(boolean ascending);
 }
