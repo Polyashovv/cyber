@@ -39,14 +39,6 @@ public class Review {
     @Column(name = "updated_at")
     private Date updatedAt;
 
-    public Review(String text, Date createdAt) {
-        this.text = text;
-        this.createdAt = createdAt;
-    }
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
     public void setText(String text) {
         this.text = text;
     }

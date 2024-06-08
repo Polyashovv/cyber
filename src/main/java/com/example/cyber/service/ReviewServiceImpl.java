@@ -62,7 +62,6 @@ public class ReviewServiceImpl implements ReviewService {
         Review existingReview = reviewRepository.findById(reviewId)
                 .orElseThrow(() -> new IllegalArgumentException("Review with id " + reviewId + " not found"));
 
-        existingReview.setRating(updatedReview.getRating());
         existingReview.setText(updatedReview.getText());
         existingReview.setUpdatedAt(new Date());
 
