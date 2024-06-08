@@ -40,4 +40,19 @@ public class OrderController {
     public ResponseEntity<List<Order>> getAllOrdersSortedByDate(@RequestParam boolean ascending) {
         return ResponseEntity.ok(orderService.getAllOrdersSortedByDate(ascending));
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
+        orderService.deleteOrder(id);
+        return ResponseEntity.noContent().build();
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Order> updateOrder(@PathVariable Long id, @RequestBody Order updatedOrder) {
+        Order order = orderService.updateOrder(id, updatedOrder);
+        if (order == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(order);
+    }
+
+
 }
