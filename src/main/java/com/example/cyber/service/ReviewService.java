@@ -14,5 +14,6 @@ public interface ReviewService {
 
     Review updateReview(Long reviewId, Review updatedReview);
 
-    List<Review> getTopReviewsByRating(int limit);
+
+    List<Review> getTopReviewsByRating();
 }

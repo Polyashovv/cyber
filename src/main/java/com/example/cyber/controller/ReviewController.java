@@ -42,9 +42,10 @@ public class ReviewController {
         return ResponseEntity.noContent().build();
     }
     @GetMapping("/top")
-    public ResponseEntity<List<Review>> getTopReviewsByRating(@RequestParam int limit) {
-        return ResponseEntity.ok(reviewService.getTopReviewsByRating(limit));
+    public ResponseEntity<List<Review>> getTopReviewsByRating() {
+        return ResponseEntity.ok(reviewService.getTopReviewsByRating());
     }
+
 
     @GetMapping("/sorted-by-rating")
     public ResponseEntity<List<Review>> getReviewsSortedByRating(@RequestParam boolean ascending) {

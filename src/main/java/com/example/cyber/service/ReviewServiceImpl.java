@@ -3,7 +3,6 @@ package com.example.cyber.service;
 import com.example.cyber.model.Review;
 import com.example.cyber.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -70,8 +69,11 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public List<Review> getTopReviewsByRating(int limit) {
-        return reviewRepository.findTopReviewsByRating(PageRequest.of(0, limit));
+    public List<Review> getTopReviewsByRating() {
+        List<Review> allReviews = reviewRepository.findAll(Sort.by(Sort.Direction.DESC, "rating"));
+        return allReviews.subList(0, Math.min(allReviews.size(), 10));
     }
+
+
 
 }
