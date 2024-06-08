@@ -40,9 +40,18 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAllProductsSortedByRating(boolean ascending) {
-        return ascending ?
-                productRepository.findAll(Sort.by(Sort.Direction.ASC, "rating")) :
-                productRepository.findAll(Sort.by(Sort.Direction.DESC, "rating"));
+    public Product updateProduct(Long productId, Product updatedProduct) {
+        Product existingProduct = productRepository.findById(productId)
+                .orElseThrow(() -> new IllegalArgumentException("Product with id " + productId + " not found"));
+
+        existingProduct.setName(updatedProduct.getName());
+        existingProduct.setDescription(updatedProduct.getDescription());
+
+        return productRepository.save(existingProduct);
+    }
+
+    @Override
+    public void deleteProduct(Long productId) {
+        productRepository.deleteById(productId);
     }
 }

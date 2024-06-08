@@ -62,4 +62,23 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> getAllOrdersSortedByDate(boolean ascending) {
         return ascending ? orderRepository.findAllByOrderByOrderDateAsc() : orderRepository.findAllByOrderByOrderDateDesc();
     }
+
+
+    @Override
+    public void deleteOrder(Long id) {
+        orderRepository.deleteById(id);
+    }
+
+    @Override
+    public Order updateOrder(Long id, Order updatedOrder) {
+        Order existingOrder = orderRepository.findById(id).orElse(null);
+        if (existingOrder == null) {
+            return null;
+        }
+        existingOrder.setProduct(updatedOrder.getProduct());
+        existingOrder.setUser(updatedOrder.getUser());
+        existingOrder.setAddress(updatedOrder.getAddress());
+
+        return orderRepository.save(existingOrder);
+    }
 }

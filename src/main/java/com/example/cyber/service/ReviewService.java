@@ -11,4 +11,6 @@ public interface ReviewService {
     void deleteReview(Long id);
     List<Review> getAllReviewsSortedByRating(boolean ascending);
     List<Review> getAllReviewsSortedByDate(boolean ascending);
+
+    Review updateReview(Long reviewId, Review updatedReview);
 }

@@ -12,4 +12,8 @@ public interface OrderService {
     Page<Order> getAllOrders(int page, boolean sortByDate);
     List<Order> getOrdersByItem(Long id) throws ProductNotFoundException;
     List<Order> getAllOrdersSortedByDate(boolean ascending);
+
+    void deleteOrder(Long id);
+
+    Order updateOrder(Long id, Order updatedOrder);
 }

@@ -48,8 +48,15 @@ public class ProductController {
         return ResponseEntity.ok(productService.getAllProductsSortedByPrice(ascending));
     }
 
-    @GetMapping("/sorted-by-rating")
-    public ResponseEntity<List<Product>> getProductsSortedByRating(@RequestParam boolean ascending) {
-        return ResponseEntity.ok(productService.getAllProductsSortedByRating(ascending));
+    @PutMapping("/{productId}")
+    public ResponseEntity<Product> updateProduct(@PathVariable Long productId, @RequestBody Product updatedProduct) {
+        return ResponseEntity.ok(productService.updateProduct(productId, updatedProduct));
     }
+
+    @DeleteMapping("/{productId}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long productId) {
+        productService.deleteProduct(productId);
+        return ResponseEntity.noContent().build();
+    }
+
 }

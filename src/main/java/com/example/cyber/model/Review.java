@@ -43,4 +43,11 @@ public class Review {
         this.text = text;
         this.createdAt = createdAt;
     }
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 }

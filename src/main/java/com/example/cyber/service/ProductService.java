@@ -15,5 +15,7 @@ public interface ProductService {
 
    List<Product> getAllProductsSortedByPrice(boolean ascending);
 
-   List<Product> getAllProductsSortedByRating(boolean ascending);
+    Product updateProduct(Long productId, Product updatedProduct);
+
+   void deleteProduct(Long productId);
 }

@@ -51,4 +51,5 @@ public class ReviewController {
     public ResponseEntity<List<Review>> getReviewsSortedByDate(@RequestParam boolean ascending) {
         return ResponseEntity.ok(reviewService.getAllReviewsSortedByDate(ascending));
     }
+
 }
