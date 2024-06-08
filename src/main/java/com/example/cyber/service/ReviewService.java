@@ -13,4 +13,6 @@ public interface ReviewService {
     List<Review> getAllReviewsSortedByDate(boolean ascending);
 
     Review updateReview(Long reviewId, Review updatedReview);
+
+    List<Review> getTopReviewsByRating(int limit);
 }
